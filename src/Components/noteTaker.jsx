@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NoteListItem from "./noteListItem";
 import "../css/noteTaker.css";
 
@@ -15,6 +15,13 @@ const NoteTaker = () => {
   const [textArea, settextArea] = useState("");
   const [saveIndex, setsaveIndex] = useState("");
 
+  useEffect(() => {
+    if (localStorage.getItem("notes")) {
+      const result = JSON.parse(localStorage.getItem("notes"));
+      setnoteData(result);
+    }
+  }, []);
+
   const handleAddNote = () => {
     setnoteData([
       ...noteData,
@@ -24,6 +31,17 @@ const NoteTaker = () => {
         date: "",
       },
     ]);
+    localStorage.setItem(
+      "notes",
+      JSON.stringify([
+        ...noteData,
+        {
+          title: "",
+          text: "",
+          date: "",
+        },
+      ])
+    );
   };
 
   const handleIndex = (id) => {
@@ -52,6 +70,7 @@ const NoteTaker = () => {
     });
     console.log("ldodod", arr);
     setnoteData(arr);
+    localStorage.setItem("notes", JSON.stringify(arr));
   };
 
   return (
@@ -69,6 +88,7 @@ const NoteTaker = () => {
                 index={index}
                 handleIndex={handleIndex}
                 note={note}
+                selectedIndex={saveIndex}
               />
             ))}
         </div>
@@ -87,7 +107,9 @@ const NoteTaker = () => {
           onChange={(e) => settextArea(e.target.value)}
           placeholder="Write your note here............"
         />
-        <button onClick={handleSave}>Save</button>
+        <button className="notes_save" onClick={handleSave}>
+          Save
+        </button>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-const NoteListItem = ({ note, index, handleIndex }) => {
+const NoteListItem = ({ note, index, handleIndex, selectedIndex }) => {
   const { title, text, date } = note;
 
   const handleItem = () => {
@@ -11,7 +11,11 @@ const NoteListItem = ({ note, index, handleIndex }) => {
   return (
     <div
       onClick={handleItem}
-      className="notes_list-item notes_list-item--selected"
+      className={
+        selectedIndex === index
+          ? " notes_list-item--selected"
+          : "notes_list-item"
+      }
     >
       <div className="notes_small-title">{title || "Title"} </div>
       <div className="notes_small-body">{text || "Description"}</div>
