@@ -1,14 +1,22 @@
 import React from "react";
 
-const NoteListItem = () => {
+const NoteListItem = ({ note, index, handleIndex }) => {
+  const { title, text, date } = note;
+
+  const handleItem = () => {
+    // console.log("index :>> ", index);
+    handleIndex(index);
+  };
+
   return (
-    // <a href="#">
-    <div className="notes_list-item notes_list-item--selected">
-      <div className="notes_small-title">Lecture Note</div>
-      <div className="notes_small-body">I learnt nothing today</div>
-      <div className="notes_small-updated">Sunday - 07/05/2022</div>
+    <div
+      onClick={handleItem}
+      className="notes_list-item notes_list-item--selected"
+    >
+      <div className="notes_small-title">{title || "Title"} </div>
+      <div className="notes_small-body">{text || "Description"}</div>
+      <div className="notes_small-updated">{date || "date"}</div>
     </div>
-    // </a>
   );
 };
 
