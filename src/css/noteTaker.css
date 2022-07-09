@@ -21,7 +21,8 @@
 }
 
 .notes_add {
-  background: #009578;
+  /* background: #009578; */
+  background: #0e387a;
   /* background: blue; */
 
   border: none;
@@ -36,7 +37,8 @@
 }
 
 .notes_add:hover {
-  background: #00af8c;
+  /* background: #00af8c; */
+  background: #5276b1;
 }
 
 .notes_list-item {
@@ -46,7 +48,8 @@
 }
 
 .notes_list-item--selected {
-  background: #b3e0d7;
+  /* background: #b3e0d7; */
+  background: #9fafca;
   border-radius: 7px;
   font-weight: bold;
 }
@@ -99,7 +102,8 @@
 }
 
 .notes_save {
-  background: #009578;
+  /* background: #009578; */
+  background: #0e387a;
   /* background: blue; */
 
   border: none;
