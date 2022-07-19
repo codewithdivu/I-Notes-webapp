@@ -18,7 +18,11 @@ const NoteListItem = ({ note, index, handleIndex, selectedIndex }) => {
       }
     >
       <div className="notes_small-title">{title || "Title"} </div>
-      <div className="notes_small-body">{text || "Description"}</div>
+      <div className="notes_small-body">
+        {text.length > 50
+          ? text.substring(0, 50) + "..."
+          : text + "..." || "Description"}
+      </div>
       <div className="notes_small-updated">{date || "date"}</div>
     </div>
   );
